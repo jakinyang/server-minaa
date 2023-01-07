@@ -9,3 +9,56 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id Int @id @default(autoincrement())
+  firstName String
+  lastNname String
+  email String
+  password String
+  phone String
+  dateOfBirth DateTime
+  avatarUrl String
+  qualification Qualification @default(BASE)
+  reports Report[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Report {
+  id Int @id @default(autoincrement())
+  longtitude Float
+  latitude Float
+  description String
+  radius Int @default(5)
+  statusCategroy StatusCategory @default(REPORTED)
+  reportCategory ReportCategory?
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  imageUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Qualification {
+  ADMIN
+  BASE
+}
+
+enum ReportCategory {
+  UNCLEAR
+  OBSCURED
+  MULTIPLE
+  LARGE
+  SMALL
+}
+
+enum StatusCategory {
+  REPORTED
+  REVIEWED
+  NEUTRALIZED
+  DISMISSED
+  VERIFIED
+  UNCERTAIN
+}

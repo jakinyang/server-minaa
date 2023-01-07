@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/jakinyang/server-minaa/issues"
   },
-  "homepage": "https://github.com/jakinyang/server-minaa#readme"
+  "homepage": "https://github.com/jakinyang/server-minaa#readme",
+  "dependencies": {
+    "@apollo/server": "^4.3.0",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.8.1",
+    "prisma": "^4.8.1"
+  }
 }

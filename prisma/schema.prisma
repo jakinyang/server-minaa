@@ -14,7 +14,7 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
   firstName String
-  lastNname String
+  lastName String
   email String
   password String
   phone String
@@ -28,7 +28,7 @@ model User {
 
 model Report {
   id Int @id @default(autoincrement())
-  longtitude Float
+  longitude Float
   latitude Float
   description String
   radius Int @default(5)

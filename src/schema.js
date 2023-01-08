@@ -1,5 +1,10 @@
+// Build a graphql schema using the GraphQL schema language based on the prisma schema 
+
 import { gql } from 'apollo-server-express';
+
 export const typeDefs = gql`
+
+scalar DateTime
 
 type User {
   id: ID
@@ -8,12 +13,12 @@ type User {
   email: String
   password: String
   phone: String
-  dateOfBirth: String
+  dateOfBirth: DateTime
   avatarUrl: String
   qualification: Qualification
   reports: [Report!]
-  createdAt: String
-  updatedAt: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 type Report {
@@ -25,8 +30,8 @@ type Report {
   statusCategory: StatusCategory
   reportCategory: ReportCategory
   user: User
-  createdAt: String
-  updatedAt: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 type Query {

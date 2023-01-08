@@ -1,9 +1,82 @@
-type Query {
-  test: String!
-  books: [Book!]!
+# generate Apollo Server graphql schema from ../prisma/schema.prisma file
+
+type User {
+  id: ID! @id
+  firstName: String!
+  lastName: String!
+  email: String! @unique
+  password: String!
+  phone: String!
+  dateOfBirth: DateTime!
+  avatarUrl: String
+  qualification: Enum
+  reports: [Report!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
-type Book {
-    title: String!
-    author: String!
-  }
+type Report {
+  id: ID! @id
+  longitude: Float!
+  latitude: Float!
+  radius: Float!
+  description: String!
+  statusCategory: Enum
+  reportCategory: Enum
+  user: User!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Query {
+  users: [User!]!
+  reports: [Report!]!
+}
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createReport(data: ReportCreateInput!): Report!
+}
+
+input UserCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  phone: String!
+  dateOfBirth: DateTime!
+  avatarUrl: String
+  qualification: Enum
+}
+
+input ReportCreateInput {
+  longitude: Float!
+  latitude: Float!
+  radius: Float!
+  description: String!
+  statusCategory: Enum
+  reportCategory: Enum
+}
+
+enum qualification {
+  BASE
+  ADMIN
+}
+
+enum reportCategory {
+  UNCLEAR
+  OBSCURED
+  MULTIPLE
+  LARGE
+  SMALL
+}
+
+enum StatusCategory {
+  REPORTED
+  REVIEWED
+  NEUTRALIZED
+  DISMISSED
+  VERIFIED
+  UNCERTAIN
+}
+

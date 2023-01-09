@@ -1,7 +1,6 @@
-// Apollo Express Server with Prisma Client
-import { ApolloServer } from '@apollo/server';
 import { PrismaClient } from '@prisma/client';
 import { startStandaloneServer } from '@apollo/server/standalone'
+import { ApolloServer } from '@apollo/server';
 import { typeDefs } from './src/schema.js';
 import { resolvers } from './src/resolvers.js';
 

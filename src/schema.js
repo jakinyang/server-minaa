@@ -47,6 +47,8 @@ type Query {
 type Mutation {
   createUser(data: UserCreateInput!): User!
   createReport(data: ReportCreateInput!): Report!
+  deleteUser(id: ID!) : User!
+  deleteReport(id: ID!): Report!
 }
 
 input UserCreateInput {

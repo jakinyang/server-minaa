@@ -13,7 +13,7 @@ function reports(parent, args, context, info) {
 function user(parent, args, context) {
   return context.prisma.user.findUnique({
     where: {
-      id: args.id
+      id: +args.id
     }
   });
 }
@@ -21,33 +21,15 @@ function user(parent, args, context) {
 function report(parent, args, context) {
   return context.prisma.report.findUnique({
     where: {
-      id: args.id
+      id: +args.id
     }
   });
 }
 
-function userReports(parent, args, context) {
-  return context.prisma.user.findMany({
-    where: {
-      id: parent.id
-    }
-  });
-}
-
-function reportUser(parent, args, context) {
-  return context.prisma.report.findUnique({
-    where: {
-      id: parent.id
-    }
-  });
-}
-
-export default {
+export {
   test,
   users,
   reports,
   user,
   report,
-  userReports,
-  reportUser
 };

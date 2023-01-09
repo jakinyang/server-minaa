@@ -6,6 +6,7 @@ import { typeDefs } from './src/schema.js';
 import { resolvers } from './src/resolvers.js';
 
 const prisma = new PrismaClient()
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,

@@ -31,7 +31,7 @@ CREATE TABLE "Report" (
     "latitude" DOUBLE PRECISION NOT NULL,
     "description" TEXT NOT NULL,
     "radius" INTEGER NOT NULL DEFAULT 5,
-    "statusCategroy" "StatusCategory" NOT NULL DEFAULT 'REPORTED',
+    "statusCategory" "StatusCategory" NOT NULL DEFAULT 'REPORTED',
     "reportCategory" "ReportCategory",
     "userId" INTEGER NOT NULL,
     "imageUrl" TEXT NOT NULL,

@@ -44,31 +44,32 @@ type Query {
   report(id: ID!): Report
 }
 
-# type Mutation {
-#   createUser(data: UserCreateInput!): User!
-#   createReport(data: ReportCreateInput!): Report!
-# }
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createReport(data: ReportCreateInput!): Report!
+}
 
-# input UserCreateInput {
-#   firstName: String!
-#   lastName: String!
-#   email: String!
-#   password: String!
-#   phone: String!
-#   dateOfBirth: String!
-#   avatarUrl: String
-#   qualification: String
-# }
+input UserCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  phone: String!
+  dateOfBirth: String!
+  avatarUrl: String!
+  qualification: Qualification!
+}
 
-# input ReportCreateInput {
-#   longitude: Float!
-#   latitude: Float!
-#   radius: Int!
-#   description: String!
-#   statusCategory: String
-#   reportCategory: String
-#   user: 
-# }
+input ReportCreateInput {
+  longitude: Float!
+  latitude: Float!
+  description: String!
+  radius: Int!
+  statusCategory: StatusCategory!
+  reportCategory: ReportCategory!
+  userId: Int!
+  imageUrl: String
+}
 
 enum Qualification {
   BASE

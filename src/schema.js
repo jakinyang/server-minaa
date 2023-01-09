@@ -17,21 +17,23 @@ type User {
   avatarUrl: String
   qualification: Qualification
   reports: [Report!]
-  createdAt: DateTime
-  updatedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Report {
-  id: ID
-  longitude: Float
-  latitude: Float
+  id: ID!
+  longitude: Float!
+  latitude: Float!
   radius: Int
   description: String
   statusCategory: StatusCategory
   reportCategory: ReportCategory
-  user: User
-  createdAt: DateTime
-  updatedAt: DateTime
+  user: User!
+  userId: Int!
+  imageUrl: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {
@@ -40,8 +42,6 @@ type Query {
   reports: [Report!]
   user(id: ID!): User
   report(id: ID!): Report
-  userReports(id: ID!): [Report!]
-  reportUser(id: ID!): User!
 }
 
 # type Mutation {

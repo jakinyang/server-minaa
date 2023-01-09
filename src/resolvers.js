@@ -1,14 +1,4 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone"
-import { readFileSync } from "fs";
-import { join, dirname } from "path";
-import { typeDefs } from "./schema.js";
-import Query from "./resolvers/Query.js";
-import { PrismaClient } from "@prisma/client";
 import { GraphQLScalarType, Kind } from 'graphql';
-
-const __dirname = dirname(new URL(import.meta.url).pathname);
-const prisma = new PrismaClient();
 
 const DateTime = new GraphQLScalarType({
   name: 'DateTime',
@@ -29,7 +19,7 @@ const DateTime = new GraphQLScalarType({
   },
 });
 
-const resolvers = {
+export const resolvers = {
   Query: {
     test: () => "Hello World",
     users: function (parent, args, context, info) {
@@ -53,37 +43,24 @@ const resolvers = {
         }
       });
     },
-    userReports: function (parent, args, context) {
-      return context.prisma.user.findMany({
+  },
+  User: {
+    reports: function (parent, args, context) {
+      return context.prisma.report.findMany({
         where: {
-          id: parent.id
+          userId: +parent.id
         }
       });
-    },
-    reportUser: function (parent, args, context) {
-      return context.prisma.report.findUnique({
+    }
+  },
+  Report: {
+    user: function (parent, args, context) {
+      return context.prisma.user.findUnique({
         where: {
-          id: parent.id
+          id: +parent.userId
         }
-      })
-    },
+      });
+    }
   },
   DateTime: DateTime,
 }
-
-// const typeDefs = readFileSync(join(__dirname , "schema.graphql"), "utf8");
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
-
-const { url } = await startStandaloneServer(server, {
-  context: async () => {
-    return {
-      prisma
-    }
-  }
-});
-
-console.log(`🚀 Server listening at: ${url}`);

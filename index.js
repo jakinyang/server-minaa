@@ -1,25 +1,18 @@
-import { PrismaClient } from '@prisma/client'
+// Apollo Express Server with Prisma Client
+import { ApolloServer } from '@apollo/server';
+import { PrismaClient } from '@prisma/client';
+import { startStandaloneServer } from '@apollo/server/standalone'
+import { typeDefs } from './src/schema.js';
+import { resolvers } from './src/resolvers.js';
 
 const prisma = new PrismaClient()
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-async function main() {
-  // ... you will write your Prisma Client queries here
-  const users = await prisma.user.findMany({
-    where: {
-      id: {
-        lte: 20
-      }
-    }
-  })
-  console.log(users)
-}
+const { url } = await startStandaloneServer(server, {
+  context: () => ({ prisma }),
+});
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+console.log(`🚀 Server ready at ${url}`);

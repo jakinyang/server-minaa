@@ -47,6 +47,8 @@ type Query {
 type Mutation {
   createUser(data: UserCreateInput!): User!
   createReport(data: ReportCreateInput!): Report!
+  updateUser(id: ID!, data: UserCreateInput!): User!
+  updateReport(id: ID!, data: ReportCreateInput!): Report!
 }
 
 input UserCreateInput {
@@ -59,6 +61,7 @@ input UserCreateInput {
   avatarUrl: String!
   qualification: Qualification!
 }
+
 
 input ReportCreateInput {
   longitude: Float!

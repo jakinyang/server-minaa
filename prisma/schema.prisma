@@ -32,7 +32,7 @@ model Report {
   latitude Float
   description String
   radius Int @default(5)
-  statusCategroy StatusCategory @default(REPORTED)
+  statusCategory StatusCategory @default(REPORTED)
   reportCategory ReportCategory?
   user User @relation(fields: [userId], references: [id])
   userId Int

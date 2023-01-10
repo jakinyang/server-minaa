@@ -7,15 +7,15 @@ export const typeDefs = gql`
 scalar DateTime
 
 type User {
-  id: ID
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone: String
-  dateOfBirth: DateTime
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  phone: String!
+  dateOfBirth: DateTime!
   avatarUrl: String
-  qualification: Qualification
+  qualification: Qualification!
   reports: [Report!]
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -29,8 +29,8 @@ type Report {
   description: String
   statusCategory: StatusCategory
   reportCategory: ReportCategory
-  user: User!
-  userId: Int!
+  user: User
+  userId: Int
   imageUrl: String!
   createdAt: DateTime!
   updatedAt: DateTime!

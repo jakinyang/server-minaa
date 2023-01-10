@@ -13,6 +13,14 @@ function createUser(parent, args, context, info) {
   })
 }
 
+function deleteUser(parent, args, context, info) {
+  return context.prisma.user.delete({
+    where: {
+      id: +args.id
+    }
+  })
+}
+
 function createReport(parent, args, context, info) {
   return context.prisma.report.create({
     data: {
@@ -28,7 +36,17 @@ function createReport(parent, args, context, info) {
   })
 }
 
+function deleteReport(parent, args, context, info) {
+  return context.prisma.report.delete({
+    where: {
+      id: +args.id 
+    }
+  })
+}
+
 export {
   createUser,
-  createReport
+  deleteUser,
+  createReport,
+  deleteReport
 }

@@ -26,6 +26,7 @@
     "apollo-server-express": "^3.11.1",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
+    "encoding": "^0.1.13",
     "graphql": "^16.6.0"
   },
   "devDependencies": {

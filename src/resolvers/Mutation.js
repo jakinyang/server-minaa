@@ -84,9 +84,27 @@ function updateReport(parent, args, context, info) {
   }))
 }
 
+function deleteUser(parent, args, context, info) {
+  return context.prisma.user.delete({
+    where: {
+      id: +args.id
+    }
+  })
+}
+
+function deleteReport(parent, args, context, info) {
+  return context.prisma.report.delete({
+    where: {
+      id: +args.id 
+    }
+  })
+}
+
 export {
   createUser,
   createReport,
   updateUser,
   updateReport,
+  deleteUser,
+  deleteReport
 }

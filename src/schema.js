@@ -96,16 +96,16 @@ input UsersFilterInput {
 }
 
 input ReportsFilterInput {
-  id: ID
-  longitude: Float
-  latitude: Float
-  radius: Int
-  description: String
-  statusCategory: StatusCategory
-  reportCategory: ReportCategory
-  userId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  longitudeGreaterThan: Float
+  longitudeLessThan: Float
+  latitudeGreaterThan: Float
+  latitudeLessThan: Float
+  statusCategoryIn: [StatusCategory!]
+  reportCategoryIn: [ReportCategory!]
+  descriptionContains: String
+  userIdIn: [Int!]
+  createdBefore: DateTime
+  createdAfter: DateTime
 }
 
 input UserCreateInput {

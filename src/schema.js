@@ -102,6 +102,7 @@ input ReportsFilterInput {
   latitudeLessThan: Float
   statusCategoryIn: [StatusCategory!]
   reportCategoryIn: [ReportCategory!]
+  radiusIn: [Int!]
   descriptionContains: String
   userIdIn: [Int!]
   createdBefore: DateTime

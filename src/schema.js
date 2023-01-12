@@ -36,12 +36,16 @@ type Report {
   updatedAt: DateTime!
 }
 
+# Queries for search and filter reports and users
+
 type Query {
   test: String
   users: [User!]
   reports: [Report!]
   user(id: ID!): User
   report(id: ID!): Report
+  usersByFilter(filter: UsersFilterInput): [User!]
+  reportsByFilter(filter: ReportsFilterInput): [Report!]
 }
 
 type Mutation {
@@ -51,6 +55,32 @@ type Mutation {
   updateReport(id: ID!, data: ReportCreateInput!): Report!
   deleteUser(id: ID!) : User!
   deleteReport(id: ID!): Report!
+}
+
+input UsersFilterInput {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  phone: String
+  dateOfBirth: DateTime
+  qualification: Qualification
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ReportsFilterInput {
+  id: ID
+  longitude: Float
+  latitude: Float
+  radius: Int
+  description: String
+  statusCategory: StatusCategory
+  reportCategory: ReportCategory
+  userId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input UserCreateInput {

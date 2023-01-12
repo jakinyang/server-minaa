@@ -70,13 +70,15 @@ function usersFilter(parent, args, context) {
 
   if (args.filter.firstNameContains) {
     where.firstName = {
-      contains: args.filter.firstNameContains
+      contains: args.filter.firstNameContains,
+      mode: 'insensitive'
     }
   }
 
   if (args.filter.lastNameContains) {
     where.lastName = {
-      contains: args.filter.lastNameContains
+      contains: args.filter.lastNameContains,
+      mode: 'insensitive'
     }
   }
 
@@ -92,8 +94,88 @@ function usersFilter(parent, args, context) {
 
 // Filter reports with variable filter fields
 function reportsFilter(parent, args, context) {
+  const where = {};
+  
+    if (args.filter.longitudeGreaterThan) {
+      if (where.longitude) {
+        where.longitude.gt = args.filter.longitudeGreaterThan
+      }
+      where.longitude = {
+        gt: args.filter.longitudeGreaterThan
+      }
+    }
+
+    if (args.filter.latitudeGreaterThan) {
+      if (where.latitude) {
+        where.latitude.gt = args.filter.latitudeGreaterThan
+      }
+      where.latitude = {
+        gt: args.filter.latitudeGreaterThan
+      }
+    }
+
+    if (args.filter.longitudeLessThan) {
+      if (where.longitude) {
+        where.longitude.lt = args.filter.longitudeLessThan
+      }
+      where.longitude = {
+        lt: args.filter.longitudeLessThan
+      }
+    }
+
+    if (args.filter.latitudeLessThan) {
+      if (where.latitude) {
+        where.latitude.lt = args.filter.latitudeLessThan
+      }
+      where.latitude = {
+        lt: args.filter.latitudeLessThan
+      }
+    }
+
+    if (args.filter.statusCategoryIn) {
+      where.statusCategory = {
+        in: [...args.filter.statusCategoryIn]
+      }
+    }
+
+    if (args.filter.reportCategoryIn) {
+      where.reportCategory = {
+        in: [...args.filter.reportCategoryIn]
+      }
+    }
+
+    if (args.filter.descriptionContains) {
+      where.description = {
+        contains: args.filter.descriptionContains
+      }
+    }
+
+    if (args.filter.userIdIn) {
+      where.userId = {
+        in: args.filter.userIdIn
+      }
+    }
+
+    if (args.filter.createdBefore) {
+      if (where.createdAt) {
+        where.createdAt.lt = args.filter.createdBefore
+      }
+      where.createdAt = {
+        lt: args.filter.createdBefore
+      }
+    }
+
+    if (args.filter.createdAfter) {
+      if (where.createdAt) {
+        where.createdAt.gt = args.filter.createdAfter
+      }
+      where.createdAt = {
+        gt: args.filter.createdAfter
+      }
+    }
+
     return context.prisma.report.findMany({
-      
+      where,
     });
 }
 

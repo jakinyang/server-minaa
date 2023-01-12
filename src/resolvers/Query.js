@@ -26,10 +26,28 @@ function report(parent, args, context) {
   });
 }
 
+// Filter users with variable filter fields
+function usersByFilter(parent, args, context) {
+
+  return context.prisma.user.findMany({
+    where: {...args.filter}
+  });
+}
+
+// Filter reports with variable filter fields
+function reportsByFilter(parent, args, context) {
+  
+    return context.prisma.report.findMany({
+      where: {...args.filter}
+    });
+}
+
 export {
   test,
   users,
   reports,
   user,
   report,
+  usersByFilter,
+  reportsByFilter
 };

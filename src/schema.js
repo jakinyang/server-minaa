@@ -44,8 +44,10 @@ type Query {
   reports: [Report!]
   user(id: ID!): User
   report(id: ID!): Report
-  usersByFilter(filter: UsersFilterInput): [User!]
-  reportsByFilter(filter: ReportsFilterInput): [Report!]
+  usersSearch(search: UsersSearchInput): [User!]
+  reportsSearch(search: ReportsSearchInput): [Report!]
+  usersFilter(filter: UsersFilterInput): [User!]
+  reportsFilter(filter: ReportsFilterInput): [Report!]
 }
 
 type Mutation {
@@ -57,7 +59,7 @@ type Mutation {
   deleteReport(id: ID!): Report!
 }
 
-input UsersFilterInput {
+input UsersSearchInput {
   id: ID
   firstName: String
   lastName: String
@@ -68,6 +70,29 @@ input UsersFilterInput {
   qualification: Qualification
   createdAt: DateTime
   updatedAt: DateTime
+}
+
+input ReportsSearchInput {
+  id: ID
+  longitude: Float
+  latitude: Float
+  radius: Int
+  description: String
+  statusCategory: StatusCategory
+  reportCategory: ReportCategory
+  userId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UsersFilterInput {
+  firstNameIn: [String!]
+  lastNameIn: [String!]
+  qualificationIn: [Qualification!]
+  phoneIn: [String!]
+  firstNameContains: String
+  lastNameContains: String
+  phoneContains: String
 }
 
 input ReportsFilterInput {

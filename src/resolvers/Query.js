@@ -26,19 +26,74 @@ function report(parent, args, context) {
   });
 }
 
-// Filter users with variable filter fields
-function usersByFilter(parent, args, context) {
+// Search users with variable filter fields
+function usersSearch(parent, args, context) {
 
   return context.prisma.user.findMany({
-    where: {...args.filter}
+    where: {...args.search}
+  });
+}
+
+// Search reports with variable filter fields
+function reportsSearch(parent, args, context) {
+  
+    return context.prisma.report.findMany({
+      where: {...args.search}
+    });
+}
+// Filter users with variable filter fields
+function usersFilter(parent, args, context) {
+  const where = {};
+  if (args.filter.firstNameIn) {
+    where.firstName = {
+      in: [...args.filter.firstNameIn]
+    }
+  }
+  console.log(where)
+  if (args.filter.lastNameIn) {
+    where.lastName = {
+      in: [...args.filter.lastNameIn]
+    }
+  }
+
+  if (args.filter.qualificationIn) {
+    where.qualification = {
+      in: [...args.filter.qualificationIn]
+    }
+  }
+
+  if (args.filter.phoneIn) {
+    where.phone = {
+      in: [...args.filter.phoneIn]
+    }
+  }
+
+  if (args.filter.firstNameContains) {
+    where.firstName = {
+      contains: args.filter.firstNameContains
+    }
+  }
+
+  if (args.filter.lastNameContains) {
+    where.lastName = {
+      contains: args.filter.lastNameContains
+    }
+  }
+
+  if (args.filter.phoneContains) {
+    where.phone = {
+      contains: args.filter.phoneContains
+    }
+  }
+  return context.prisma.user.findMany({
+    where,
   });
 }
 
 // Filter reports with variable filter fields
-function reportsByFilter(parent, args, context) {
-  
+function reportsFilter(parent, args, context) {
     return context.prisma.report.findMany({
-      where: {...args.filter}
+      
     });
 }
 
@@ -48,6 +103,8 @@ export {
   reports,
   user,
   report,
-  usersByFilter,
-  reportsByFilter
+  usersSearch,
+  reportsSearch,
+  usersFilter,
+  reportsFilter,
 };

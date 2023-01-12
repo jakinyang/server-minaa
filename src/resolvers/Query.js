@@ -144,6 +144,12 @@ function reportsFilter(parent, args, context) {
       }
     }
 
+    if (args.filter.radiusIn) {
+      where.radius = {
+        in: [...args.filter.radiusIn]
+      }
+    }
+
     if (args.filter.descriptionContains) {
       where.description = {
         contains: args.filter.descriptionContains

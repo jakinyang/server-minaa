@@ -141,6 +141,7 @@ enum ReportCategory {
   OBSCURED
   MULTIPLE
   LARGE
+  MEDIUM
   SMALL
 }
 

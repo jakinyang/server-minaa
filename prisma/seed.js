@@ -18,7 +18,7 @@ async function main() {
         reports: {
           create: [
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",
@@ -26,7 +26,7 @@ async function main() {
               radius: 10
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",
@@ -52,7 +52,7 @@ async function main() {
         reports: {
           create: [
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "OBSCURED",
@@ -61,7 +61,7 @@ async function main() {
               statusCategory: "REVIEWED"
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "MULTIPLE",
@@ -88,7 +88,7 @@ async function main() {
         reports: {
           create: [
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "OBSCURED",
@@ -97,7 +97,7 @@ async function main() {
               statusCategory: "NEUTRALIZED"
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "SMALL",
@@ -124,7 +124,7 @@ async function main() {
         reports: {
           create: [
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "OBSCURED",
@@ -133,7 +133,7 @@ async function main() {
               statusCategory: "UNCERTAIN"
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",
@@ -142,7 +142,7 @@ async function main() {
               statusCategory: "DISMISSED"
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",
@@ -169,14 +169,14 @@ async function main() {
         reports: {
           create: [
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",
               imageUrl: faker.image.imageUrl()
             },
             {
-              longitude: Number(faker.address.longitude(90, -90, 6)),
+              longitude: Number(faker.address.longitude(180, -180, 6)),
               latitude: Number(faker.address.latitude(90, -90, 6)),
               description: faker.lorem.sentence(),
               reportCategory: "UNCLEAR",

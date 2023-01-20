@@ -22,7 +22,7 @@ function createReport(parent, args, context, info) {
       description: args.data.description,
       statusCategory: args.data.statusCategory,
       reportCategory: args.data.reportCategory,
-      userId: args.data.userId,
+      userId: +args.data.userId,
       imageUrl: args.data.imageUrl
     }
   })
